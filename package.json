@@ -1,0 +1,29 @@
+{
+  "name": "mongoose_hmk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klsweat/mongoose_hmk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klsweat/mongoose_hmk/issues"
+  },
+  "homepage": "https://github.com/klsweat/mongoose_hmk#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.10.4",
+    "morgan": "^1.8.2",
+    "note": "^1.2.1",
+    "request": "^2.81.0"
+  }
+}
