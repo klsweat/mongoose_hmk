@@ -53,16 +53,18 @@ app.get("/scrape", function(req, res) {
   request("https://techcrunch.com/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
+
     // Now, we grab every h2 within an article tag, and do the following:
-    $("ul h2").each(function(i, element) {
+    $("ul li").each(function(i, element) {
 
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children("a").text();
-      result.link = $(this).children("a").attr("href");
-      result.image = $(this).children("img").attr("src");
+      result.title = $(this).children("h2 a").text();
+      result.link = $(this).children("h2 a").attr("href");
+      result.link = $(this).parent("img").attr("src");
+
 
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
