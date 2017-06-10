@@ -7,9 +7,11 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+
 // Requiring our Note and Article models
-var Note = require("./models/Note.js");
+var Comment = require("./models/Comment.js");
 var Article = require("./models/Article.js");
+
 // Our scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
@@ -55,15 +57,16 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(html);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("ul li").each(function(i, element) {
+    $(".block-content").each(function(i, element) {
 
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children("h2 a").text();
-      result.link = $(this).children("h2 a").attr("href");
-      result.link = $(this).parent("img").attr("src");
+      result.title = $(this).children("h2").text();
+      result.link  = $(this).find("h2 a").attr("href");
+      result.image = $(this).find('img').attr("src");
+      result.excerpt = $(this).find('p');
 
 
       // Using our Article model, create a new entry
@@ -86,7 +89,15 @@ app.get("/scrape", function(req, res) {
   });
   // Tell the browser that we finished scraping the text
   res.send("Scrape Complete");
+  res.redirect("/index");
 });
+
+// Simple index route
+app.get("/", function(req,res){
+  res.send(index.html);
+})
+
+
 
 // This will get the articles we scraped from the mongoDB
 app.get("/articles", function(req, res) {
@@ -108,7 +119,7 @@ app.get("/articles/:id", function(req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
   Article.findOne({ "_id": req.params.id })
   // ..and populate all of the notes associated with it
-  .populate("note")
+  .populate("comment")
   // now, execute our query
   .exec(function(error, doc) {
     // Log any errors
@@ -126,10 +137,10 @@ app.get("/articles/:id", function(req, res) {
 // Create a new note or replace an existing note
 app.post("/articles/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
-  var newNote = new Note(req.body);
+  var newComment = new Comment(req.body);
 
   // And save the new note the db
-  newNote.save(function(error, doc) {
+  newComment.save(function(error, doc) {
     // Log any errors
     if (error) {
       console.log(error);
@@ -137,7 +148,7 @@ app.post("/articles/:id", function(req, res) {
     // Otherwise
     else {
       // Use the article id to find and update it's note
-      Article.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
+      Article.findOneAndUpdate({ "_id": req.params.id }, { "comment": doc._id })
       // Execute the above query
       .exec(function(err, doc) {
         // Log any errors
@@ -147,8 +158,32 @@ app.post("/articles/:id", function(req, res) {
         else {
           // Or send the document to the browser
           res.send(doc);
+          console.log(doc);
         }
       });
+    }
+  });
+});
+
+
+
+
+// Delete One from the DB
+app.get("/delete/:id", function(req, res) {
+  // Remove a note using the objectID
+  Comment.remove({
+    "_id": req.params.id
+  }, function(error, removed) {
+    // Log any errors from mongojs
+    if (error) {
+      console.log(error);
+      res.send(error);
+    }
+    // Otherwise, send the mongojs response to the browser
+    // This will fire off the success function of the ajax request
+    else {
+      console.log(removed);
+      res.send(removed);
     }
   });
 });

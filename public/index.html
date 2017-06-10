@@ -1,49 +1,444 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Scraping With Mongoose</title>
-    <style>
-      body { background-color: #F2F6D0 }
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
-      }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
-      }
-      #notes {
-        float: right;
-        width: 30%;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: #FCF5C7;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <h1>Note Scraper</h1>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
-      <div id="articles"></div>
-      <div id="notes"></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="assets/favicon.ico">
+<title>Scraping with Mongoose</title>
+<!-- Fontawesome icon CSS -->
+<link rel="stylesheet" href="assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="assets/vendor/bootstrap4alpha/css/bootstrap.css" type="text/css">
+
+<!-- swipebox CSS -->
+<link href="assets/vendor/masonry_swipebox/swipebox.min.css" rel="stylesheet">
+
+<!-- Adminux CSS -->
+<link rel="stylesheet" href="assets/css/dark_blue_adminux.css" type="text/css">
+</head>
+<body class="menuclose menuclose-right ">
+
+
+<div class="wrapper-content">
+
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-16">
+        <div class="card full-screen-container ">
+          <div class="card-header align-items-start justify-content-between flex">
+            <h5 class="card-title  pull-left">About us </h5>
+            <ul class="nav  card-header-pills pull-right">
+              <li class="nav-item">
+                <button class="btn btn-sm btn-link btn-round" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down"></i></button>
+                <div class="dropdown-menu"> <a class="dropdown-item" href="#"><i class="fa fa-check"></i> Visible public</a> <a class="dropdown-item" href="#"><i class="fa fa-edit"></i> Edit</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Report</a> </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card-block">
+            <dl class="row full-width">
+              <dt class="col-16"></dt>
+              <dd class="col-16">This is awesome product and, I am very happy with delivery and product packaging. Overall experience is good and I prefer to buy it again from this portals and like more business orders.</dd>
+              <dt class="col-16">Bio</dt>
+              <dd class="col-16">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dd class="col-16 ">Donec id elit non mi porta gravida at eget metus.</dd>
+              <dt class="col-16">Birth Date</dt>
+              <dd class="col-16">25/10/83</dd>
+              <dt class="col-16 text-truncate">Location</dt>
+              <dd class="col-16">Switzerland</dd>
+            </dl>
+          </div>
+        </div>
+    
+        <hr>
+ 
+        <hr class="hidden-md-down">
+        <div class="list-unstyled project-list row hidden-md-down">
+          <div class="col-16">
+            <div class="media flex-column "> <span class="projectpic"><img src="assets/img/project_pic.jpg" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+              <div class="overlay ">
+                <label class="ribbon left danger"><span>Maxartkiller</span></label>
+                <h6 class="mt-0 mb-1">Website Design</h6>
+                2017 <br>
+                <br>
+                <a href="#" class="btn btn-outline-white btn-round "><i class="fa fa-eye"></i>View </a> </div>
+            </div>
+          </div>
+        </div>
+
+     
+        
+      </div>
+      <div class="col-md-16 col-lg-11" id="articles">
+       
+       
+   
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+  </div>
+
+</div>
+<div class="search-block">
+  <button class="close-btn btn btn-link"><span class="fa fa-times"></span></button>
+  <div class="container">
+    <div class="row">
+      <form class="form-inline pull-left search-block-form">
+        <input class="form-control " type="text" placeholder="Search..." value="Adminux by Maxartkiller " autofocus>
+        <button class="btn btn-link icon-header " type="submit"><span class="fa fa-search"></span></button>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col ">
+        <ul class="nav flex-column ">
+          <li class="title-nav">Search result for "Adminux by Maxartkiller"</li>
+          <li class=""><br>
+          </li>
+          <li class="nav-item">
+            <div class="list-unstyled search-list"> <a href="#" class="media">
+              <div class="media-body">
+                <h6 class="mt-0 mb-1">Beautiful admin template ever</h6>
+                http://www.maxartkiller.in <br>
+                <p class="description">Bootstrape 4 based creatively hand crafter admin tempolate never seen before. #1 template in UI design and experience it provides.</p>
+              </div>
+              </a> <a href="#" class="media">
+              <div class="media-body">
+                <h6 class="mt-0 mb-1">Beautiful admin template ever</h6>
+                http://www.maxartkiller.in <br>
+                <p class="description">Bootstrape 4 based creatively hand crafter admin tempolate never seen before. #1 template in UI design and experience it provides.</p>
+              </div>
+              </a> <a href="#" class="media">
+              <div class="media-body">
+                <h6 class="mt-0 mb-1">Beautiful admin template ever</h6>
+                http://www.maxartkiller.in <br>
+                <p class="description">Bootstrape 4 based creatively hand crafter admin tempolate never seen before. #1 template in UI design and experience it provides.</p>
+              </div>
+              </a> </div>
+          </li>
+        </ul>
+      </div>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col "> <br>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item"> <a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a> </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"> <a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a> </li>
+          </ul>
+        </nav>
+        <hr>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <div class="card full-screen-container">
+          <div class="card-header align-items-start justify-content-between flex">
+            <h5 class="card-title  pull-left">Popular People</h5>
+          </div>
+          <div class="card-block">
+            <div class="list-unstyled member-list row">
+              <div class="col-lg col-sm-8 col-xs-16 ">
+                <div class="media flex-column "> <span class="message_userpic"><img class="d-flex" src="assets/img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1">Astha Smith</h6>
+                    New Jersey, UK
+                    <p class="description">This is awesome product and, I am very happy</p>
+                  </div>
+                  <div class="overlay align-items-center">
+                    <button class="btn btn-success btn-round mr-2"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger mr-2 btn-round "><i class="fa fa-close"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-sm-8 col-xs-16 ">
+                <div class="media flex-column "> <span class="message_userpic"><img class="d-flex" src="assets/img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1">Rahul Akshay </h6>
+                    New Jersey, UK
+                    <p class="description">This is awesome product and, I am very happy</p>
+                  </div>
+                  <div class="overlay align-items-center">
+                    <button class="btn btn-success btn-round mr-2"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger mr-2 btn-round "><i class="fa fa-close"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-sm-8 col-xs-16 ">
+                <div class="media flex-column "> <span class="message_userpic"><img class="d-flex" src="assets/img/user-header.png" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1">Rocky Jolly</h6>
+                    New Jersey, UK
+                    <p class="description">This is awesome product and, I am very happy</p>
+                  </div>
+                  <div class="overlay align-items-center">
+                    <button class="btn btn-success btn-round mr-2"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger mr-2 btn-round "><i class="fa fa-close"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card full-screen-container">
+          <div class="card-header align-items-start justify-content-between flex">
+            <h5 class="card-title  pull-left">Popular Project</h5>
+          </div>
+          <div class="card-block">
+            <div class="list-unstyled project-list row">
+              <div class="col-8">
+                <div class="media flex-column "> <span class="projectpic"><img src="assets/img/project_pic.jpg" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                  <div class="overlay ">
+                    <label class="ribbon danger">Maxartkiller</label>
+                    <h6 class="mt-0 mb-1">Website Design</h6>
+                    2017 <br>
+                    <br>
+                    <a href="#" class="btn btn-outline-white btn-round "><i class="fa fa-eye"></i>View </a> </div>
+                </div>
+              </div>
+              <div class="col-8">
+                <div class="media flex-column "> <span class="projectpic"><img src="assets/img/project_pic.jpg" alt="Generic user image"> <span class="user-status bg-success "></span></span>
+                  <div class="overlay ">
+                    <label class="ribbon danger">Maxartkiller</label>
+                    <h6 class="mt-0 mb-1">Website Design</h6>
+                    2017 <br>
+                    <br>
+                    <a href="#" class="btn btn-outline-white btn-round "><i class="fa fa-eye"></i>View </a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+<!-- themepicker modal starts -->
+<div class="modal fade" id="themepicker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select your Preferances</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+      </div>
+      <div class="modal-body">
+        <table class="table color_pick_table mb-0">
+          <thead>
+            <tr>
+              <th class="p-0"></th>
+              <th class="p-0"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="">Fills</td>
+              <td>
+                   <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#fullcolored" role="tab"><img src="assets/img/Layout_Fill_all.png" alt="" class="responsive-img"></a> </li>
+                      <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#headersidebarfill" role="tab"><img src="assets/img/Layout_Fill_side_header.png" alt="" class="responsive-img"></a> </li>
+                      <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#sidebarfill" role="tab"><img src="assets/img/Layout_Fill_side.png" alt="" class="responsive-img"></a> </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="fullcolored" role="tabpanel">
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_blue_adminux" name="color_pick" checked>
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens1.png" alt="" class="color_pick"><br><span>Dark Blue</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_purple_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens7.png" alt="" class="color_pick"><br><span>Dark Purple</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_red_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens8.png" alt="" class="color_pick"><br><span>Dark Red</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_grey_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens9.png" alt="" class="color_pick"><br><span>Dark Grey</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_green_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens10.png" alt="" class="color_pick"><br><span>Dark Green</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="dark_brown_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens11.png" alt="" class="color_pick"><br><span>Brown</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description"><img src="assets/img/screens12.png" alt="" class="color_pick"><br><span>White</span></span> 
+                            </label>                        
+                        </div>
+                      <div class="tab-pane" id="headersidebarfill" role="tabpanel">
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+blue_header_sidebar_adminux" name="color_pick" >
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens1.png" alt="" class="color_pick"><br>
+                                <span>Dark Blue</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+purple_header_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens7.png" alt="" class="color_pick"><br>
+                                <span>Dark Purple</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+red_header_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens8.png" alt="" class="color_pick"><br>
+                                <span>Dark Red</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+grey_header_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens9.png" alt="" class="color_pick"><br>
+                                <span>Dark Grey</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+green_header_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens10.png" alt="" class="color_pick"><br>
+                                <span>Dark Green</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+brown_header_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/2screens11.png" alt="" class="color_pick"><br>
+                                <span>Brown</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/screens12.png" alt="" class="color_pick"><br>
+                                <span>White</span></span> 
+                            </label> 
+                        
+                        </div>
+                        <div class="tab-pane" id="sidebarfill" role="tabpanel"> 
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+blue_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens1.png" alt="" class="color_pick"><br>
+                                <span>Dark Blue</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+purple_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens7.png" alt="" class="color_pick"><br>
+                                <span>Dark Purple</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+red_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens8.png" alt="" class="color_pick"><br>
+                                <span>Dark Red</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+grey_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens9.png" alt="" class="color_pick"><br>
+                                <span>Dark Grey</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+green_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens10.png" alt="" class="color_pick"><br>
+                                <span>Dark Green</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light+brown_sidebar_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/themes/3screens11.png" alt="" class="color_pick"><br>
+                                <span>Brown</span></span> 
+                            </label>
+                            <label class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input select-color" data-color="light_adminux" name="color_pick">
+                                <span class="custom-control-indicator"></span> <span class="custom-control-description"><img src="assets/img/screens12.png" alt="" class="color_pick"><br>
+                                <span>White</span></span> 
+                            </label>
+                        </div>
+                    </div>
+
+                  
+                  
+                </td>
+            </tr>
+            <tr>
+              <td>Reading</td>
+              <td>
+                  <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input select-reading" name="read_style" data-reading="ltr-read" checked>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><img src="assets/img/Layout_LTR.png" alt="" class="color_pick"><br><span>Left to Right</span></span> 
+                  </label>
+                  <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input select-reading" name="read_style" data-reading="rtl-read">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><img src="assets/img/Layout_RTL.png" alt="" class="color_pick"><br><span>Right to Left</span></span> 
+                  </label>
+                </td>
+            </tr>
+            <tr>
+              <td>Display</td>
+              <td>
+                  <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input select-rounded" name="display_mode"  data-rounded="" checked>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><img src="assets/img/Layout_Flat_corner.png" alt="" class="color_pick"><br><span>Flat Corner</span></span> 
+                  </label>
+                  <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input select-rounded" data-rounded="rounded" name="display_mode">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><img src="assets/img/Layout_more_rounded.png" alt="" class="color_pick"><br><span>More Rounded</span></span> 
+                  </label>    
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- themepicker modal ends here ! --> 
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+
+<script src="assets/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+<script src="assets/vendor/bootstrap4alpha/js/tether.min.js"></script> 
+
+<script src="assets/vendor/bootstrap4alpha/js/bootstrap.min.js" type="text/javascript"></script> 
+
+<!--Cookie js for theme chooser and applying it --> 
+<script src="assets/vendor/cookie/jquery.cookie.js"  type="text/javascript"></script> 
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> <script src="assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- Circular chart progress js --> 
+<script src="assets/vendor/cicular_progress/circle-progress.min.js" type="text/javascript"></script> 
+<!--swipebox image preview js--> 
+<script type="text/javascript" src="assets/vendor/masonry_swipebox/jquery.swipebox.min.js"></script> 
+
+<!--sparklines js--> 
+<script type="text/javascript" src="assets/vendor/sparklines/jquery.sparkline.min.js"></script> 
+
+<!-- custome template js --> 
+<script src="assets/js/adminux.js" type="text/javascript"></script> 
+<script>
+   "use strict";
+    $('.swipebox').swipebox();
+</script>
+
+<script src="app.js"></script>
+</body>
 </html>
